@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For My Love ❤️</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: linear-gradient(
+        135deg,
+        #7b0f23,
+        #b11226,
+        #ff4d6d,
+        #a0002a
+    );
+    background-size: 400% 400%;
+    animation: romanticGradient 14s ease infinite;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+/* Soft romantic glow */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(
+        circle at center,
+        rgba(255, 182, 193, 0.25),
+        transparent 70%
+    );
+    pointer-events: none;
+}
+
+@keyframes romanticGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Floating hearts */
+.heart {
+    position: fixed;
+    bottom: -20px;
+    color: rgba(255, 255, 255, 0.95);
+    animation: floatUp linear infinite;
+    pointer-events: none;
+}
+
+@keyframes floatUp {
+    from {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-120vh) scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* Main card */
+.card {
+    max-width: 900px;
+    margin: 80px auto;
+    padding: 50px 40px;
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(14px);
+    border-radius: 25px;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 2s ease;
+}
+
+h1 {
+    font-size: 48px;
+    margin-bottom: 25px;
+    text-shadow: 0 0 25px rgba(255,255,255,0.9);
+}
+
+/* Typewriter message */
+#message {
+    margin: 0 auto;
+    max-width: 700px;
+    font-size: 24px;
+    line-height: 1.6;
+    min-height: 200px;
+    white-space: pre-line;
+    overflow: hidden;
+    border-right: 3px solid rgba(255,255,255,0.8);
+    animation: blinkCursor .7s infinite;
+}
+
+@keyframes blinkCursor {
+    0%, 100% { border-right-color: white; }
+    50% { border-right-color: transparent; }
+}
+
+/* Love text */
+.love {
+    font-size: 50px;
+    margin-top: 40px;
+    font-weight: 600;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 15px white, 0 0 30px #ff9aa2;
+    }
+    to {
+        text-shadow: 0 0 30px white, 0 0 60px #ffccd5;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Footer note */
+.footer {
+    margin-top: 30px;
+    font-size: 14px;
+    opacity: 0.85;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    h1 { font-size: 36px; }
+    #message { font-size: 20px; }
+    .love { font-size: 38px; }
+    .card { margin: 40px 15px; padding: 35px 25px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Floating hearts -->
+<script>
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (16 + Math.random() * 28) + "px";
+    heart.style.animationDuration = (4 + Math.random() * 6) + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 9000);
+}
+setInterval(createHeart, 300);
+</script>
+
+<div class="card">
+    <h1>To My Beautiful Girlfriend ❤️</h1>
+    <div id="message"></div>
+    <div class="love">I Love You ❤️</div>
+    <div class="footer">Forever & Always</div>
+</div>
+
+<script>
+const text = [
+    "Hey my love, 💕",
+    "",
+    "I just wanted to remind you how special you are to me.",
+    "You make my days brighter, my heart happier,",
+    "and my life so much better.",
+    "",
+    "I love you endlessly. ❤️"
+];
+
+let line = 0, char = 0;
+const speed = 60;
+
+function typeWriter() {
+    if (line < text.length) {
+        if (char < text[line].length) {
+            document.getElementById("message").innerHTML += text[line][char];
+            char++;
+        } else {
+            document.getElementById("message").innerHTML += "<br>";
+            line++;
+            char = 0;
+        }
+        setTimeout(typeWriter, speed);
+    }
+}
+typeWriter();
+</script>
+
+<!-- Optional background music -->
+<audio autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+</body>
+</html>
